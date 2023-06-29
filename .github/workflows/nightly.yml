@@ -1,0 +1,12 @@
+name: Nightly Test
+on:
+  schedule:
+    - cron: '10 * * * *' # https://pubs.opengroup.org/onlinepubs/9699919799/utilities/crontab.html#tag_20_25_07
+
+jobs:
+  tests:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v3
+      - run: |
+            echo "${{ $github.event_name }}"
