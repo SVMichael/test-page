@@ -1,8 +1,8 @@
 name: Nightly Test
 on:
   schedule:
-    - cron: '30 * * * *' # https://pubs.opengroup.org/onlinepubs/9699919799/utilities/crontab.html#tag_20_25_07
-
+    - cron: '*/5 * * * *'
+    
 jobs:
   tests:
     runs-on: ubuntu-latest
