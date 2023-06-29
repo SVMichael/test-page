@@ -2,11 +2,20 @@ name: Nightly Test
 on:
   schedule:
     - cron: '*/6 * * * *'
+  workflow_dispatch:
     
 jobs:
-  tests:
+  tests_schedule:
+    if: ${{ github.event_name == 'schedule' }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
       - run: |
-          echo ${{ github.event_name }}
+          echo "Ran from schedule"
+  tests_manually:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - run: |
+          echo {{ github.event_name }}
+          
